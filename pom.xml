@@ -19,7 +19,7 @@
   <properties>
     <source.version>1.8</source.version>
     <target.version>1.8</target.version>
-    <server-sdk.version>6.0.1.0</server-sdk.version>
+    <server-sdk.version>7.2.0.0</server-sdk.version>
     <server-sdk.maven-version>${server-sdk.version}</server-sdk.maven-version>
     <extension.name>${project.name}</extension.name>
     <extension.version>${project.version}</extension.version>

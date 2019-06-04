@@ -42,12 +42,21 @@ public class OracleEBSRest extends SyncDestination {
 
         StringArgument attributeArgument = new StringArgument(null, ARG_NAME_ATTRIBUTE, false, 1, "{attribute}", "the attribute type where a user ID will be written back to the source entry", ARG_ATTRIBUTE_DEFAULT);
         parser.addArgument(attributeArgument);
+
+        StringArgument argumentClientId = new StringArgument(null,"client-id",true,1,"{id}","The OAuth client ID");
+        StringArgument argumentClientSecret = new StringArgument(null,"client-secret",true,1,"{secret}","The OAuth client secret");
+        argumentClientSecret.setSensitive(true);
+
+        parser.addDependentArgumentSet(argumentClientId,argumentClientSecret);
+        parser.addDependentArgumentSet(argumentClientSecret,argumentClientId);
+
     }
 
     @Override
     public void initializeSyncDestination(SyncServerContext serverContext, SyncDestinationConfig config, ArgumentParser parser) throws EndpointException {
         url = parser.getStringArgument(ARG_NAME_URL).getValue();
         attributeType = parser.getStringArgument(ARG_NAME_ATTRIBUTE).getValue();
+
     }
 
 
